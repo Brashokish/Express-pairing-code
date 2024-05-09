@@ -1,189 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="KISH MD" />
-    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5UU6cV2tYLJO93KkaniWk2zmQ8AYlyv6LpA&usqp=CAU" type="image/x-icon" />
-    <title>QR Code</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Kish-Qr</title>
+  <style>
+    /* Resetting default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-     body,
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Outfit", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('https://image.lexica.art/full_webp/bf43e634-900b-44f2-8ed9-7749073c2856'); 
-    background-size: cover; 
-    background-position: center; 
-    position: relative;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
 
+    .bg {
+      text-align: center;
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+    }
 
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .nft {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
 
+    .main {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
 
-body::before {
-    content: "KISH MD";
-    position: fixed;
-    font-size: 3em;
-    color: rgba(255, 255, 255, 0.2); 
-    z-index: -1; 
-}
+    .tokenImage {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
 
-main.code {
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 400px;
-    width: 100%;
-}
+    .description {
+      margin-top: 10px;
+    }
 
-div.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
+    .tokenInfo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
 
-img.code_1 {
-    width: 70%;
-    max-width: 200px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
+    .price p {
+      visibility: hidden; /* Hide the CitelVoid text */
+    }
 
-h1.title {
-    color: #128c7e;
-    font-weight: 700;
-    font-size: 1.5em;
-    margin-top: 20px;
-}
+    .duration {
+      display: flex;
+      align-items: center;
+    }
 
-p.legend {
-    color: #777;
-    font-size: 1em;
-    margin-top: 10px;
-    text-align: center;
-}
+    .duration p {
+      margin-left: 5px;
+    }
 
-.duration {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    color: #777;
-    font-size: 1em;
-}
+    .progress-bar {
+      width: 120px;
+      height: 10px;
+      background-color: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-left: 10px;
+    }
 
-.progress-bar {
-    width: 100px;
-    height: 10px;
-    background-color: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-left: 10px;
-}
+    .fill {
+      height: 100%;
+      background-color: #007bff;
+      animation: fillAnimation 8s linear forwards;
+    }
 
-.fill {
-    height: 100%;
-    background-color: #007bff;
-    animation: fillAnimation 20s linear forwards;
-}
-
-@keyframes fillAnimation {
-    0% {
+    @keyframes fillAnimation {
+      0% {
         width: 0;
-    }
-    100% {
+      }
+      100% {
         width: 100%;
+      }
     }
-}
 
-.refresh-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: none;
-}
-
-.img-container {
-    position: relative;
-}
-
-img.code_1:hover {
-    animation: scanAnimation 1s ease infinite;
-}
-
-@keyframes scanAnimation {
-    0% {
-        transform: translateY(0);
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
-    50% {
-        transform: translateY(10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
 
-    </style>
+    .creator {
+      display: flex;
+      align-items: center;
+    }
+
+    .creator img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .creator p {
+      margin: 0;
+    }
+
+    .wrapper {
+      border: 2px solid #007bff;
+      border-radius: 50%;
+      padding: 2px;
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 600px) {
+      .tokenImage {
+        width: 230px;
+        height: 230px;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="overlay">
-        <main class="code">
-            <div class="card">
-                <div class="img-container">
-                    <img id="qr-code" class="code_1" src="https://kish-web-qr.onrender.com/" alt="KISH MD" title="Scan the QR code to connect with WhatsApp" />
-                    <div class="refresh-button">Refresh Page</div>
-                </div>
-                <h1 class="title">KISH MD QR</h1>
-                <p class="legend">Scan The QR To Get Session id For KISH MD</p>
-                <div class="duration">
-                    <ins>◷</ins>
-                    <p>Scan within 20 sec</p>
-                    <div class="progress-bar">
-                        <div class="fill"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
+  <div class="bg">
+    <h1>Kish</h1>
+  </div>
+  <div class="nft">
+    <div class="main">
+      <img class="tokenImage" src="https://kish-web-qr.onrender.com/" alt="" />
+      <h2>Kish MD</h2>
+      <p class="description">You'll get Session ID in log number.</p>
+        <div class="duration">
+          <ins>◷</ins>
+          <div class="progress-bar">
+            <div class="fill"></div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="creator">
+        <div class="wrapper">
+          <img src="https://telegra.ph/file/4d1400f060d947b746180.png" alt="Creator" />
+        </div>
+        <p><ins>Creation of</ins> Brashokish</p>
+      </div>
     </div>
-
-    <script>
-        // After 20 seconds, show the refresh button
-        setTimeout(() => {
-            document.querySelector('.refresh-button').style.display = 'block';
-        }, 20000);
-    </script>
+  </div>
+  <script>
+    // After 8 seconds, prompt the user to reload the page
+    setTimeout(() => {
+      const reload = confirm("Scan within 30 seconds completed. Reload page to scan again?");
+      if (reload) {
+        location.reload();
+      }
+    }, 8000);
+  </script>
 </body>
-
 </html>

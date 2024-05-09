@@ -87,6 +87,60 @@ p.legend {
     text-align: center;
 }
 
+.duration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    color: #777;
+    font-size: 1em;
+}
+
+.progress-bar {
+    width: 100px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.fill {
+    height: 100%;
+    background-color: #007bff;
+    animation: fillAnimation 20s linear forwards;
+}
+
+@keyframes fillAnimation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.refresh-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+.img-container {
+    position: relative;
+}
+
+img.code_1:hover {
+    animation: scanAnimation 1s ease infinite;
+}
 
 @keyframes scanAnimation {
     0% {
@@ -100,10 +154,6 @@ p.legend {
     }
 }
 
-img.code_1:hover {
-    animation: scanAnimation 1s ease infinite;
-}
-
     </style>
 </head>
 
@@ -111,20 +161,29 @@ img.code_1:hover {
     <div class="overlay">
         <main class="code">
             <div class="card">
-                <img id="qr-code" class="code_1" src="https://kish-web-qr.onrender.com/" alt="KISH MD" title="Scan the QR code to connect with WhatsApp" />
+                <div class="img-container">
+                    <img id="qr-code" class="code_1" src="https://kish-web-qr.onrender.com/" alt="KISH MD" title="Scan the QR code to connect with WhatsApp" />
+                    <div class="refresh-button">Refresh Page</div>
+                </div>
                 <h1 class="title">KISH MD QR</h1>
                 <p class="legend">Scan The QR To Get Session id For KISH MD</p>
-        </div>
-        <div class="duration">
-          <ins>◷</ins>
-          <p>Scan within 20/ sec</p>
-          <div class="progress-bar">
-            <div class="fill"></div>
-          </div>
-        </div>
+                <div class="duration">
+                    <ins>◷</ins>
+                    <p>Scan within 20 sec</p>
+                    <div class="progress-bar">
+                        <div class="fill"></div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
+
+    <script>
+        // After 20 seconds, show the refresh button
+        setTimeout(() => {
+            document.querySelector('.refresh-button').style.display = 'block';
+        }, 20000);
+    </script>
 </body>
 
 </html>
